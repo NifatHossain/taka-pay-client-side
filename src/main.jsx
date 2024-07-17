@@ -13,6 +13,13 @@ import AuthProvider from './provider/AuthProvider';
 import Login from './pages/Login';
 import PrivateRoute from './provider/PrivateRoute';
 import PendingPage from './pages/PendingPage';
+import CashIn from './pages/CashIn';
+import CashOut from './pages/CashOut';
+import UserHistory from './pages/UserHistory';
+import AgentHistory from './pages/AgentHistory';
+import SendMoney from './pages/SendMoney';
+import AgentManagement from './pages/AgentManagement';
+import UserManagement from './pages/UserManagement';
 
 const router = createBrowserRouter([
   {
@@ -38,8 +45,33 @@ const router = createBrowserRouter([
       },
       {
         path:'/cashin',
-        element:<PrivateRoute></PrivateRoute>
+        element:<PrivateRoute><CashIn></CashIn></PrivateRoute>
+      },
+      {
+        path:'/cashout',
+        element:<PrivateRoute><CashOut></CashOut></PrivateRoute>
+      },
+      {
+        path:'/sendmoney',
+        element: <PrivateRoute><SendMoney></SendMoney></PrivateRoute>
+      },
+      {
+        path:'/userhistory',
+        element:<PrivateRoute><UserHistory></UserHistory></PrivateRoute>
+      },
+      {
+        path:'/agenthistory',
+        element:<PrivateRoute><AgentHistory></AgentHistory></PrivateRoute>
+      },
+      {
+        path:'/agentmanagement',
+        element:<AgentManagement></AgentManagement>
+      },
+      {
+        path:'/usermanagement',
+        element:<UserManagement></UserManagement>
       }
+
     ]
   },
 ]);
