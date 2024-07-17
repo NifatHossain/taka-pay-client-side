@@ -35,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: '/pending',
         element: <PendingPage></PendingPage>
+      },
+      {
+        path:'/cashin',
+        element:<PrivateRoute></PrivateRoute>
       }
     ]
   },

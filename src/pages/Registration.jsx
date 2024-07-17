@@ -16,6 +16,7 @@ const Registration = () => {
         const email= e.target.email.value;
         const mobile= e.target.mobile.value;
         const role='pending'
+        const status='active'
         const balance= 0;
         const pin= e.target.pin.value;
         let firebasePassword=pin;
@@ -32,7 +33,7 @@ const Registration = () => {
                     var salt = bcrypt.genSaltSync(10);
                     var hash = bcrypt.hashSync(pin, salt);
                     // console.log(bcrypt.compareSync("12345", '$2a$10$ggAiZ4iSiQllyH1qXXGG5O2mIPNGUBg8lowQcj2irBZ7yNfG5dMUO'));
-                    const data= {name,email,mobile, hash,role,balance}
+                    const data= {name,email,mobile, hash,role,balance,status}
                     console.log(data)
                     axiosPublic.post('/adduser',data)
                     .then((result)=>{
