@@ -1,9 +1,12 @@
+import HomeElement from "../components/HomeElement";
+import Navbar from "../components/Navbar";
 
 
 const Home = () => {
     return (
-        <div>
-            <h2>THis is homepage</h2>
+        <div className="max-w-2xl mx-auto p-5 bg-red-50 min-h-screen">
+            <Navbar></Navbar>
+            <HomeElement></HomeElement>
         </div>
     );
 };

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useAxiosPublic from '../hooks/useAxiosPublic';
 import Swal from 'sweetalert2';
 
@@ -8,7 +8,6 @@ const bcrypt = require('bcryptjs');
 
 const Registration = () => {
     const axiosPublic=useAxiosPublic()
-    const location=useLocation()
     const navigate= useNavigate()
     const {signUp,updateUserInfo}=useContext(AuthContext)
     const handleSubmit=(e)=>{
@@ -16,7 +15,7 @@ const Registration = () => {
         const name= e.target.name.value;
         const email= e.target.email.value;
         const mobile= e.target.mobile.value;
-        const role='user'
+        const role='pending'
         const balance= 0;
         const pin= e.target.pin.value;
         let firebasePassword=pin;
@@ -45,7 +44,7 @@ const Registration = () => {
                                 showConfirmButton: false,
                                 timer: 1500
                             });
-                            navigate(location?.state? location.state:'/home')
+                            navigate('/pending')
                          }
                     })
                     

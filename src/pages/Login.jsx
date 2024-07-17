@@ -1,17 +1,32 @@
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 
 const Login = () => {
+    const axiosPublic=useAxiosPublic()
     const {signIn}=useAuth()
     // const location=useLocation()
     const navigate= useNavigate()
-    const handleLogin = (e) => {
+    const handleLogin = async(e) => {
         e.preventDefault()
         const email=e.target.email.value;
         let password=e.target.pin.value;
         password+='a'
+        const result=await axiosPublic.get(`/getrole/${email}`)
+        console.log(result.data?.role);
+        if(result.data?.role=='pending'){
+            return Swal.fire({
+                title: "Pending",
+                text: "Your account is still pending",
+                icon: "error",
+                showConfirmButton: false,
+                timer: 3500
+            });
+                
+            
+        }
         signIn(email,password)
         .then(result=>{
             const user= result.user;
